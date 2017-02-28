@@ -1,10 +1,14 @@
 import React from 'react';
+import Jumbotron from '../components/Jumbotron';
 
 class Home extends React.Component {
 
   render() {
     return (
-      <div>Home</div>
+      <div>
+        <Jumbotron/>
+        Home
+      </div>
     );
   }
 

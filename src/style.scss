@@ -1,9 +1,17 @@
-#body {
-  display       : flex;
-  min-height    : 100%;
-  flex-direction: column;
-}
+@import "web-fonts";
+$url: web-fonts-url("Open Sans");
+@import url($url);
 
-.main-wrapper {
-  flex: 1;
+body {
+  header {
+    nav.uk-navbar {
+      margin-bottom: -100%;
+    }
+  }
+
+  .main-wrapper {
+    .jumbotron {
+      padding-top: 100px;
+    }
+  }
 }

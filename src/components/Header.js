@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 
 class Header extends React.Component {
 
@@ -9,33 +10,33 @@ class Header extends React.Component {
           <div className="uk-narbar-left">
             <ul className="uk-navbar-nav">
               <li>
-                <a className="" href="#">
+                <Link to="/">
                   Atom
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
           <div className="uk-navbar-right">
             <ul className="uk-navbar-nav">
               <li className="uk-text-uppercase">
-                <a className="" href="/">
+                <Link to="/">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="uk-text-uppercase">
-                <a className="" href="/about">
+                <Link to="/about">
                   About
-                </a>
+                </Link>
               </li>
               <li className="uk-text-uppercase">
-                <a className="" href="#">
+                <Link to="/jobs">
                   Jobs
-                </a>
+                </Link>
               </li>
               <li className="uk-text-uppercase">
-                <a className="" href="/login">
+                <Link to="/login">
                   <button className="uk-button">Sign In</button>
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

@@ -11,6 +11,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './view/Home';
 import About from './view/About';
+import Jobs from './view/Jobs';
+import Feed from './view/Feed';
 import Login from './view/Login';
 import Register from './view/Register';
 import Profile from './view/Profile';
@@ -26,7 +28,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      user: {}
     };
   }
   componentDidMount() {
@@ -68,7 +70,20 @@ class App extends Component {
     atom.createUser({
       email: 'bobtony@firebase.com',
       password: 'correcthorsebatterystaple'
-    }, this.verifyUser);
+    }, (user) => {
+      this.verifyUser(user);
+      atom.post(`users/${user.uid}`, {
+        data: {
+          name: 'Tyler McGinnis',
+          age: 25
+        },
+        then(err) {
+          if (!err) {
+            console.log('yay!!');
+          }
+        }
+      });
+    });
   }
 
   signInUser = (email, password) => {
@@ -91,13 +106,14 @@ class App extends Component {
         {({
           ...router
         }) => (
-          <div className="body uk-flex uk-flex-column" data-uk-height-viewport>
-            <Header router={router}/>
-            <div className="main-wrapper uk-container uk-flex-1">
-              <Match exactly pattern="/" component={Home}/>
+          <div id="body" data-uk-height-viewport>
+            <Header user={this.state.user} isUserAuth={this.isUserAuth}/>
+            <div className="main-wrapper">
+              <Match exactly pattern="/" component={() => <Home isUserAuth={this.isUserAuth} router={router}/>}/>
               <Match exactly pattern="/about" component={About}/>
+              <Match exactly pattern="/jobs" component={Jobs}/>
+              <Match exactly pattern="/register" component={() => <Register isUserAuth={this.isUserAuth} registerUser={this.registerUser}/>}/>
               <Match exactly pattern="/login" component={() => <Login isUserAuth={this.isUserAuth} signInUser={this.signInUser}/>}/>
-              <Match exactly pattern="/register" component={() => <Register registerUser={this.registerUser}/>}/>
               <MatchOnAuth user={this.state.user} isUserAuth={this.isUserAuth} signOutUser={this.signOutUser} pattern="/profile" component={Profile}/>
               <Miss component={Home}/>
             </div>

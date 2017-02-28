@@ -1,18 +1,36 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import ReactSVG from 'react-svg';
 import {Link} from 'react-router';
+import $ from 'jquery';
 
 class Header extends React.Component {
 
   render() {
+    let AuthButton = () => {
+      if (this.props.user) {
+        return (
+          <Link to="/profile">
+            {this.props.user.email}
+          </Link>
+        )
+      }
+      return (
+        <Link to="/login">
+          <button className="uk-button">Sign In</button>
+        </Link>
+      )
+    }
     return (
-      <header>
-        <nav className="uk-navbar-container" data-uk-navbar>
+      <header data-uk-sticky="show-on-up: true; animation: uk-animation-slide-top;">
+        <nav className={`uk-navbar-container uk-navbar-transparent`} data-uk-navbar ref="nav">
           <div className="uk-narbar-left">
             <ul className="uk-navbar-nav">
               <li>
-                <Link to="/">
+                <a className="" href="#top" data-uk-scroll>
+                  <ReactSVG path="../logo.svg"/>
                   Atom
-                </Link>
+                </a>
               </li>
             </ul>
           </div>
@@ -34,9 +52,7 @@ class Header extends React.Component {
                 </Link>
               </li>
               <li className="uk-text-uppercase">
-                <Link to="/login">
-                  <button className="uk-button">Sign In</button>
-                </Link>
+                {AuthButton()}
               </li>
             </ul>
           </div>

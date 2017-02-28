@@ -1,17 +1,140 @@
-@import "web-fonts";
-$url: web-fonts-url("Open Sans");
-@import url($url);
+@import url( 'https://fonts.googleapis.com/css?family=Dosis|Lato:200,300,400');
+$dosis: 'Dosis', sans-serif;
+$lato: 'Lato', sans-serif;
+$blue: #157fe0;
 
 body {
-  header {
-    nav.uk-navbar {
-      margin-bottom: -100%;
+  .dosis {
+    font-family: $dosis;
+  }
+
+  .lato {
+    font-family: $lato;
+  }
+
+  span {
+    &.icon-gradient {
+      background             : -webkit-linear-gradient(45deg, #fc00ff, #00dbde);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    &.main-icon {
+      font-size: 110px;
     }
   }
 
-  .main-wrapper {
-    .jumbotron {
-      padding-top: 100px;
+  button {
+    &.rounded {
+      border-radius : 40px;
+      letter-spacing: 2px;
+    }
+
+    &.transparent {
+      background: transparent;
+    }
+
+    &.wt {
+      border: 2px solid #fff;
+      color : #fff;
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      &.medium-text {
+        font-size: 20px;
+      }
+
+      &.large-text {
+        font-size: 28px;
+      }
+    }
+  }
+
+  #body {
+    display       : flex;
+    min-height    : 100%;
+    flex-direction: column;
+    font-family   : $lato;
+
+    header {
+      nav.uk-navbar {
+        margin-bottom: -100%;
+        background   : transparentize(#fff, 0.01);
+
+        button.uk-button {
+          background    : $blue;
+          border-color  : transparent;
+          color         : #fff;
+          border        : 2px solid transparent;
+          border-radius : 40px;
+          padding       : 0 20px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          transition    : all 0.3s linear;
+        }
+
+        &.uk-navbar-transparent {
+          background: transparent;
+
+          button.uk-button {
+            background  : transparent;
+            border-color: rgba(255, 255, 255, 0.75);
+            color       : rgba(255, 255, 255, 0.75);
+            transition  : all 0.3s linear;
+          }
+
+          button.uk-button:hover {
+            background  : rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 1);
+            color       : rgba(255, 255, 255, 1);
+          }
+        }
+      }
+    }
+
+    .main-wrapper {
+      flex: 1;
+
+      hr {
+        border-width: 2px 0 0 0;
+        max-width   : 180px;
+        margin      : 0 auto 40px;
+      }
+
+      .jumbotron,
+      .main-section {
+        padding-top: 100px;
+      }
+
+      .section-title {
+        font-family   : $dosis;
+        letter-spacing: 4px;
+        font-size     : 40px;
+
+        &.large-title {
+          font-size: 70px;
+        }
+      }
+
+      .main-panel {
+        padding: 20px;
+
+        .panel-title {
+          text-transform: uppercase;
+          font-family   : $lato;
+          font-weight   : 200;
+          text-align    : center;
+          letter-spacing: 2px;
+        }
+
+        p {
+          text-align : center;
+          font-family: $lato;
+          font-size  : 16px;
+        }
+      }
     }
   }
 }

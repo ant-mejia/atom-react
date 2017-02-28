@@ -9,7 +9,7 @@ class Login extends React.Component {
       return <Redirect to={'/profile'}/>
     }
     return (
-      <div>
+      <div className="main-section uk-container">
         <h1>Login</h1>
         <form className="uk-form" onSubmit={(e) => {
           e.preventDefault();

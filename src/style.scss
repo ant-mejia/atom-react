@@ -1,0 +1,9 @@
+#body {
+  display       : flex;
+  min-height    : 100%;
+  flex-direction: column;
+}
+
+.main-wrapper {
+  flex: 1;
+}
